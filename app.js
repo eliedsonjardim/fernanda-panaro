@@ -1,11 +1,11 @@
 (function(){
   'use strict';
-  var product={productName:'Guia do Sofá · Edição 01',launchPrice:47,referencePrice:97,checkoutUrl:'',installmentText:'',deliveryText:'Acesso digital após a confirmação da compra.',supportText:'Canal de suporte a definir na configuração da Green.'};
+  var product={productName:'Guia do Sofá · Edição 01',launchPrice:47,referencePrice:97,checkoutUrl:'https://payfast.greenn.com.br/97w8uhr?ch_id=142923',installmentText:'',deliveryText:'Acesso digital após a confirmação da compra.',supportText:'Canal de suporte a definir na configuração da Green.'};
   window.FERNANDA_PRODUCT=Object.freeze(product);
   document.querySelectorAll('[data-installments]').forEach(function(el){if(product.installmentText){el.textContent=product.installmentText;el.hidden=false;}});
   function track(name,details){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name,product_name:product.productName},details||{}));}
   function getCheckout(){if(!product.checkoutUrl)return '';var out=new URL(product.checkoutUrl,location.href);new URLSearchParams(location.search).forEach(function(v,k){if(/^utm_/i.test(k))out.searchParams.set(k,v);});return out.toString();}
-  document.querySelectorAll('.js-checkout').forEach(function(button){button.addEventListener('click',function(){track('click_checkout',{checkout_ready:Boolean(product.checkoutUrl)});var url=getCheckout();if(url){location.assign(url);return;}document.querySelectorAll('[data-checkout-status]').forEach(function(s){s.textContent='Compra ainda não liberada nesta prévia. O checkout da Green será conectado aqui.';});var offer=document.getElementById('oferta');if(offer&&!offer.contains(button))offer.scrollIntoView({behavior:'smooth',block:'center'});});});
+  document.querySelectorAll('.js-checkout').forEach(function(button){button.addEventListener('click',function(event){event.preventDefault();track('click_checkout',{checkout_ready:Boolean(product.checkoutUrl)});var url=getCheckout();if(url){location.assign(url);return;}document.querySelectorAll('[data-checkout-status]').forEach(function(s){s.textContent='Compra ainda não liberada nesta prévia. O checkout da Green será conectado aqui.';});var offer=document.getElementById('oferta');if(offer&&!offer.contains(button))offer.scrollIntoView({behavior:'smooth',block:'center'});});});
   var mobileBuy=document.querySelector('.mobile-buy');
   var offerSection=document.getElementById('oferta');
   if(mobileBuy&&offerSection){
