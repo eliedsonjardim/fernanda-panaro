@@ -9,7 +9,13 @@
   var mobileBuy=document.querySelector('.mobile-buy');
   var offerSection=document.getElementById('oferta');
   if(mobileBuy&&offerSection){
-    var updateSticky=function(){var passed=window.scrollY>offerSection.offsetTop+offerSection.offsetHeight;if(passed){mobileBuy.classList.add('is-visible');}else{mobileBuy.classList.remove('is-visible');}mobileBuy.setAttribute('aria-hidden',String(!passed));};
+    var isV3=document.body.classList.contains('guia-v3');
+    var heroCheckout=isV3?offerSection.querySelector('.js-checkout'):null;
+    var updateSticky=function(){
+      var passed=isV3?window.matchMedia('(max-width:699px)').matches&&heroCheckout.getBoundingClientRect().bottom<=0:window.scrollY>offerSection.offsetTop+offerSection.offsetHeight;
+      mobileBuy.classList.toggle('is-visible',passed);
+      mobileBuy.setAttribute('aria-hidden',String(!passed));
+    };
     window.addEventListener('scroll',updateSticky,{passive:true});window.addEventListener('resize',updateSticky);updateSticky();
   }
   track('page_view',{page_type:'product_landing'});
