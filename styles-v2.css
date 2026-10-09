@@ -255,3 +255,24 @@
 .guia-v3 .v3-proof-heading{max-width:800px}
 .guia-v3 .v3-proof-heading h2{margin-bottom:14px}
 .guia-v3 .v3-proof-heading p{font-size:15px;color:#d8cfbd;margin:0;max-width:600px}
+
+/* Desktop refinement: keep the approved mobile layout unchanged. */
+@media(min-width:700px){
+ .guia-v3 .v3-problem{background:#f5f0e7;border-top:1px solid #cfc4b2;padding-block:64px}
+ .guia-v3 .v3-inside{padding-block:64px}
+ .guia-v3 .v3-inside-layout{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;align-items:center}
+ .guia-v3 .v3-pages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;overflow:visible;padding:0;scroll-snap-type:none;min-width:0}
+ .guia-v3 .v3-pages figure{min-width:0}
+ .guia-v3 .v3-pages img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top}
+ .guia-v3 .v3-pages figcaption{font-size:11px;letter-spacing:.04em;line-height:1.5}
+ .guia-v3 .v3-swipe-hint{display:none}
+ .guia-v3 .v3-learning .v3-page-hint{font-size:12px;line-height:1.6}
+ .guia-v3 .v3-final{padding-block:64px}
+ .guia-v3 .v3-guarantee-note{font-size:14px;line-height:1.6;padding-top:20px;margin-top:20px;border-top:1px solid #b7aa94;color:var(--v3-ink)}
+ .guia-v3 .v3-guarantee-note strong{display:block;font-family:var(--display);font-size:21px;font-weight:500;line-height:1.3;margin-bottom:8px}
+}
+@media(min-width:700px) and (max-width:999px){
+ .guia-v3 .v3-inside-layout{grid-template-columns:minmax(0,1fr);gap:28px}
+ .guia-v3 .v3-pages{max-width:640px;width:100%;margin-inline:auto}
+ .guia-v3 .v3-learning{max-width:640px;width:100%;margin-inline:auto}
+}
